@@ -115,12 +115,12 @@ function Index() {
           </div>
         </section>
 
-        <section id="infraestructura" className="scroll-mt-20 bg-surface-strong py-24 text-primary-foreground sm:py-32">
+        <section id="infraestructura" className="scroll-mt-20 bg-surface-strong py-24 text-on-dark sm:py-32">
           <div className="mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-2 lg:items-center">
-            <div><p className="font-mono text-xs uppercase text-signal">02 / Infraestructura</p><h2 className="mt-5 text-3xl font-bold leading-tight sm:text-5xl">Construida para resistir.<br />Diseñada para avanzar.</h2><p className="mt-6 max-w-xl leading-8 text-primary-foreground/65">Unificamos aplicación, nube, redes y observabilidad en una sola arquitectura operable. Menos puntos ciegos. Más velocidad de entrega.</p></div>
-            <div className="border border-primary-foreground/15 bg-primary-foreground/5 p-5 sm:p-8">
-              <div className="mb-7 flex items-center justify-between border-b border-primary-foreground/15 pb-5"><span className="font-mono text-xs text-primary-foreground/55">NEXIA / CORE</span><span className="flex items-center gap-2 font-mono text-[10px] text-signal"><span className="h-2 w-2 rounded-full bg-signal node-pulse" />OPERATIONAL</span></div>
-              {["Application layer", "Cloud orchestration", "Network fabric", "Observability"].map((label, index) => <div key={label} className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-4 border-b border-primary-foreground/10 py-4 last:border-0"><span className="font-mono text-[10px] text-primary-foreground/35">0{index + 1}</span><span className="truncate text-sm">{label}</span><span className="h-1.5 w-16 bg-primary-foreground/10"><span className="block h-full bg-signal" style={{ width: `${88 + index * 3}%` }} /></span></div>)}
+            <div><p className="font-mono text-xs uppercase text-signal">02 / Infraestructura</p><h2 className="mt-5 text-3xl font-bold leading-tight sm:text-5xl">Construida para resistir.<br />Diseñada para avanzar.</h2><p className="mt-6 max-w-xl leading-8 text-on-dark/65">Unificamos aplicación, nube, redes y observabilidad en una sola arquitectura operable. Menos puntos ciegos. Más velocidad de entrega.</p></div>
+            <div className="border border-on-dark/15 bg-on-dark/5 p-5 sm:p-8">
+              <div className="mb-7 flex items-center justify-between border-b border-on-dark/15 pb-5"><span className="font-mono text-xs text-on-dark/55">NEXIA / CORE</span><span className="flex items-center gap-2 font-mono text-[10px] text-signal"><span className="h-2 w-2 rounded-full bg-signal node-pulse" />OPERATIONAL</span></div>
+              {["Application layer", "Cloud orchestration", "Network fabric", "Observability"].map((label, index) => <div key={label} className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-4 border-b border-on-dark/10 py-4 last:border-0"><span className="font-mono text-[10px] text-on-dark/35">0{index + 1}</span><span className="truncate text-sm">{label}</span><span className="h-1.5 w-16 bg-on-dark/10"><span className="block h-full bg-signal" style={{ width: `${88 + index * 3}%` }} /></span></div>)}
             </div>
           </div>
         </section>
