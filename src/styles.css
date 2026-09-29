@@ -167,7 +167,8 @@
     letter-spacing: 0;
   }
 
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; color-scheme: light; }
+  html.dark { color-scheme: dark; }
   ::selection { background: color-mix(in oklab, var(--primary) 24%, transparent); }
 }
 

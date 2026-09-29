@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { ArrowDownRight, ArrowRight, Boxes, Check, CloudCog, Github, Linkedin, Menu, Moon, Network, ServerCog, Sun, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ArrowDownRight, ArrowRight, ArrowUpRight, Blocks, Boxes, Check, CloudCog, Cpu, Cctv, Github, Linkedin, Menu, Moon, Network, ScanFace, ServerCog, SolarPanel, Sun, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { THEME_STORAGE_KEY } from "@/lib/theme";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -18,36 +20,30 @@ export const Route = createFileRoute("/")({
 });
 
 function Logo() {
-  return <a href="#inicio" aria-label="Nexiatech, inicio" className="flex items-center gap-3 font-bold text-foreground">
-    <svg viewBox="0 0 42 42" className="h-9 w-9" aria-hidden="true">
-      <path d="M7 33V9l14 18V9l14 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-      <circle cx="7" cy="9" r="3.5" className="fill-primary" /><circle cx="7" cy="33" r="3.5" className="fill-signal" />
-      <circle cx="21" cy="9" r="3.5" className="fill-flare" /><circle cx="21" cy="27" r="3.5" className="fill-primary" />
-      <circle cx="35" cy="33" r="3.5" className="fill-signal" />
-    </svg>
-    <span className="text-lg">nexia<span className="text-primary">tech</span></span>
-  </a>;
+  return (
+    <a href="#inicio" aria-label="Nexiatech, inicio" className="flex items-center font-bold text-foreground">
+      <img 
+        src="/logo.png" 
+        alt="Logo Nexiatech" 
+        className="h-12 w-auto object-contain" 
+      />
+      <span className="text-lg">
+        nexia<span className="text-primary">tech</span>
+      </span>
+    </a>
+  );
 }
 
 function NetworkVisual() {
   return <div className="relative mx-auto aspect-square w-full max-w-[600px] overflow-hidden rounded-md border border-border bg-surface shadow-2xl shadow-primary/10">
     <div className="absolute inset-0 bg-[linear-gradient(var(--grid-line)_1px,transparent_1px),linear-gradient(90deg,var(--grid-line)_1px,transparent_1px)] bg-[size:42px_42px]" />
-    <div className="absolute left-5 top-5 flex items-center gap-2 rounded-sm border border-border bg-background/80 px-3 py-2 font-mono text-[10px] uppercase text-muted-foreground backdrop-blur-sm sm:text-xs"><span className="h-2 w-2 rounded-full bg-signal node-pulse" />Arquitectura activa</div>
-    <svg viewBox="0 0 600 600" className="absolute inset-0 h-full w-full p-8" aria-label="Diagrama de arquitectura tecnológica conectada" role="img">
-      <g fill="none" stroke="currentColor" strokeWidth="1.2" className="text-primary/25">
-        <path d="M102 150 278 95 486 175 422 364 274 505 104 396Z" />
-        <path d="M102 150 300 288 486 175M104 396 300 288 422 364M278 95 300 288 274 505" />
-      </g>
-      <g fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="7 9" className="signal-flow text-primary/70">
-        <path d="M102 150 300 288 422 364" /><path d="M278 95 300 288 274 505" />
-      </g>
-      <g className="text-background" stroke="currentColor" strokeWidth="5">
-        <circle cx="102" cy="150" r="12" className="fill-primary node-pulse" /><circle cx="278" cy="95" r="9" className="fill-flare node-pulse" />
-        <circle cx="486" cy="175" r="12" className="fill-signal node-pulse" /><circle cx="300" cy="288" r="21" className="fill-primary node-pulse" />
-        <circle cx="422" cy="364" r="10" className="fill-primary node-pulse" /><circle cx="274" cy="505" r="12" className="fill-signal node-pulse" />
-        <circle cx="104" cy="396" r="9" className="fill-flare node-pulse" />
-      </g>
-    </svg>
+    <div className="absolute inset-0 h-full w-full p-8">
+      <img 
+        src="/back.jpeg" 
+        alt="Fotografía macro de un prototipo de circuito impreso Nexiatech para IoT de misión crítica"
+        className="h-full w-full object-contain object-center"
+      />
+    </div>
     <div className="float-panel absolute bottom-5 right-5 border border-border bg-background/90 p-4 shadow-xl backdrop-blur-sm">
       <p className="font-mono text-[10px] uppercase text-muted-foreground">Disponibilidad</p><p className="mt-1 text-xl font-bold">99.99%</p>
     </div>
@@ -60,10 +56,68 @@ const capabilities = [
   { icon: Network, number: "03", title: "Redes & Observabilidad", text: "Telemetría, monitoreo y redes de alto rendimiento para operaciones siempre visibles y disponibles.", tags: ["Monitoring", "Networks", "SRE"] },
 ];
 
+const projects = [
+  {
+    icon: SolarPanel,
+    number: "01",
+    category: "Energía renovable",
+    title: "Paneles solares para energía renovable",
+    text: "Instalaciones fotovoltaicas diseñadas de extremo a extremo: cálculo de generación, estructura, cableado y monitoreo por string para que la planta produzca el máximo posible con el mínimo mantenimiento.",
+    tags: ["Fotovoltaica", "Inversores", "SCADA", "Mantenimiento"],
+    featured: true,
+  },
+  {
+    icon: Cctv,
+    number: "02",
+    category: "Videovigilancia autónoma",
+    title: "Cámaras con paneles solares",
+    text: "Cámaras de seguridad que funcionan sin conexión a la red eléctrica: panel solar integrado, batería, enlace inalámbrico y central de revisión remota.",
+    tags: ["CCTV", "Off-grid", "Wireless", "4G / LTE"],
+  },
+  {
+    icon: Cpu,
+    number: "03",
+    category: "Software & hardware",
+    title: "Desarrollo de software con IoT",
+    text: "Plataformas que conectan sensores y dispositivos en tiempo real: ingesta de telemetría, control remoto, reglas de automatización y tableros de operación.",
+    tags: ["MQTT", "Telemetría", "Dashboards", "APIs"],
+  },
+  {
+    icon: Blocks,
+    number: "04",
+    category: "Ingeniería a medida",
+    title: "Software a la medida",
+    text: "Sistemas desarrollados desde cero para tu operación, integrándose con las herramientas que ya usas. Arquitectura, backend, frontend e integraciones bajo un mismo estándar de calidad.",
+    tags: ["Angular", "Spring Boot", "APIs", "Cloud"],
+  },
+  {
+    icon: ScanFace,
+    number: "05",
+    category: "Visión por computadora",
+    title: "Cámaras de reconocimiento facial",
+    text: "Reconocimiento facial para control de acceso, conteo de personas y análisis de flujo, con procesamiento en el borde y protocolos de privacidad y seguridad biométrica.",
+    tags: ["Computer Vision", "Edge AI", "Biometría", "Seguridad"],
+  },
+];
+
 function Index() {
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
-  useEffect(() => { document.documentElement.classList.toggle("dark", dark); }, [dark]);
+  const themeSynced = useRef(false);
+
+  useEffect(() => {
+    if (!themeSynced.current) {
+      themeSynced.current = true;
+      setDark(document.documentElement.classList.contains("dark"));
+      return;
+    }
+    document.documentElement.classList.toggle("dark", dark);
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, dark ? "dark" : "light");
+    } catch {
+      /* storage unavailable */
+    }
+  }, [dark]);
 
   return (
     <div id="inicio" className="min-h-screen overflow-hidden bg-background text-foreground">
@@ -73,7 +127,8 @@ function Index() {
           <nav className="hidden items-center gap-8 lg:flex" aria-label="Navegación principal">
             <a href="#servicios" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Servicios</a>
             <a href="#infraestructura" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Infraestructura</a>
-            <a href="#ecosistema" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Proyectos <span className="ml-1 text-primary">↗</span></a>
+            <a href="#proyectos" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Proyectos</a>
+            <a href="#ecosistema" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Ecosistema</a>
           </nav>
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="icon" onClick={() => setDark(!dark)} aria-label={dark ? "Activar modo claro" : "Activar modo oscuro"} title={dark ? "Modo claro" : "Modo oscuro"}>{dark ? <Sun /> : <Moon />}</Button>
@@ -81,7 +136,7 @@ function Index() {
             <Button variant="outline" size="icon" className="lg:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label="Abrir menú">{menuOpen ? <X /> : <Menu />}</Button>
           </div>
         </div>
-        {menuOpen && <nav className="border-t border-border bg-background p-5 lg:hidden"><div className="mx-auto grid max-w-7xl gap-1"><a onClick={() => setMenuOpen(false)} href="#servicios" className="py-3 text-sm">Servicios</a><a onClick={() => setMenuOpen(false)} href="#infraestructura" className="py-3 text-sm">Infraestructura</a><a onClick={() => setMenuOpen(false)} href="#ecosistema" className="py-3 text-sm">Proyectos</a><Button asChild className="mt-3 sm:hidden"><a href="mailto:hola@nexiatech.com">Iniciar proyecto</a></Button></div></nav>}
+        {menuOpen && <nav className="border-t border-border bg-background p-5 lg:hidden"><div className="mx-auto grid max-w-7xl gap-1"><a onClick={() => setMenuOpen(false)} href="#servicios" className="py-3 text-sm">Servicios</a><a onClick={() => setMenuOpen(false)} href="#infraestructura" className="py-3 text-sm">Infraestructura</a><a onClick={() => setMenuOpen(false)} href="#proyectos" className="py-3 text-sm">Proyectos</a><a onClick={() => setMenuOpen(false)} href="#ecosistema" className="py-3 text-sm">Ecosistema</a><Button asChild className="mt-3 sm:hidden"><a href="mailto:hola@nexiatech.com">Iniciar proyecto</a></Button></div></nav>}
       </header>
 
       <main>
@@ -89,9 +144,8 @@ function Index() {
           <div className="absolute inset-0 -z-10 bg-[linear-gradient(var(--grid-line)_1px,transparent_1px),linear-gradient(90deg,var(--grid-line)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:linear-gradient(to_bottom,black,transparent_80%)]" />
           <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 pb-20 sm:px-8 sm:pb-28 lg:grid-cols-[1.05fr_.95fr] lg:gap-16 lg:pb-32">
             <div className="animate-fade-in">
-              <div className="mb-8 inline-flex items-center gap-2 border border-border bg-surface px-3 py-2 font-mono text-[10px] uppercase text-muted-foreground sm:text-xs"><span className="h-2 w-2 rounded-full bg-signal" />Engineering systems that scale</div>
               <h1 className="max-w-3xl text-4xl font-extrabold leading-[1.08] sm:text-6xl lg:text-7xl">Ingeniería que conecta <span className="text-primary">software</span>, infraestructura y futuro.</h1>
-              <p className="mt-7 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">Diseñamos y operamos tecnología de misión crítica. Nexiatech es el núcleo de ingeniería de panamproject para productos que exigen velocidad, resiliencia y escala.</p>
+              <p className="mt-7 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">Transformamos ideas complejas en infraestructura inteligente. Nexiatech es el socio de ingeniería y desarrollo IoT para productos que no pueden permitirse fallar.</p>
               <div className="mt-10 flex flex-col gap-3 sm:flex-row">
                 <Button asChild size="lg" className="h-13 px-7"><a href="mailto:hola@nexiatech.com?subject=Cotización de desarrollo">Cotizar desarrollo <ArrowRight /></a></Button>
                 <Button asChild variant="outline" size="lg" className="h-13 px-7"><a href="#infraestructura">Ver arquitectura <ArrowDownRight /></a></Button>
@@ -125,10 +179,34 @@ function Index() {
           </div>
         </section>
 
+        <section id="proyectos" className="scroll-mt-20 py-24 sm:py-32">
+          <div className="mx-auto max-w-7xl px-5 sm:px-8">
+            <div className="grid gap-8 pb-12 lg:grid-cols-[.7fr_1.3fr] lg:items-end">
+              <div><p className="font-mono text-xs uppercase text-primary">03 / Proyectos</p><h2 className="mt-4 text-3xl font-bold sm:text-5xl">Ingeniería aplicada<br className="hidden sm:block" /> a problemas reales.</h2></div>
+              <p className="max-w-2xl text-base leading-7 text-muted-foreground lg:justify-self-end">Cinco líneas donde convergen energía, hardware y software. Sistemas completos, desde la ingeniería inicial hasta la operación diaria.</p>
+            </div>
+            <div className="grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+              {projects.map((item) => (
+                <article key={item.number} className={cn("group flex flex-col bg-background p-7 transition-colors duration-300 hover:bg-surface sm:p-9", item.featured && "lg:col-span-2")}>
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="grid h-12 w-12 place-items-center border border-border bg-surface text-primary transition-colors group-hover:border-primary/50"><item.icon className="h-5 w-5" /></div>
+                    <span className="font-mono text-xs text-muted-foreground">{item.number}</span>
+                  </div>
+                  <p className="mt-12 font-mono text-[10px] uppercase text-signal">{item.category}</p>
+                  <h3 className={cn("mt-3 font-bold", item.featured ? "text-2xl sm:text-3xl" : "text-xl")}>{item.title}</h3>
+                  <p className="mt-4 max-w-2xl text-sm leading-7 text-muted-foreground">{item.text}</p>
+                  <div className="mt-8 flex flex-wrap gap-2">{item.tags.map((tag) => <span key={tag} className="border border-border px-2.5 py-1 font-mono text-[10px] text-muted-foreground">{tag}</span>)}</div>
+                  <a href={`mailto:hola@nexiatech.com?subject=${encodeURIComponent(`Proyecto: ${item.title}`)}`} className="mt-auto inline-flex items-center gap-2 self-start pt-10 text-sm font-semibold text-primary">Solicitar propuesta <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></a>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section id="ecosistema" className="scroll-mt-20 py-24 sm:py-32">
           <div className="mx-auto max-w-7xl px-5 sm:px-8"><div className="grid gap-12 border-y border-border py-14 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
             <div className="relative flex min-h-72 items-center justify-center overflow-hidden bg-muted"><div className="absolute inset-0 bg-[linear-gradient(var(--grid-line)_1px,transparent_1px),linear-gradient(90deg,var(--grid-line)_1px,transparent_1px)] bg-[size:32px_32px]" /><div className="relative flex items-center gap-5"><div className="grid h-20 w-20 place-items-center border border-border bg-background shadow-xl"><ServerCog className="h-8 w-8 text-primary" /></div><div className="h-px w-12 bg-primary" /><div className="border border-border bg-background p-5 shadow-xl"><p className="font-mono text-[10px] text-muted-foreground">ECOSYSTEM</p><p className="mt-1 text-lg font-bold">panamproject</p></div></div></div>
-            <div><p className="font-mono text-xs uppercase text-flare">03 / Ecosistema</p><h2 className="mt-5 text-3xl font-bold sm:text-5xl">Tecnología con respaldo y visión de negocio.</h2><p className="mt-6 max-w-2xl leading-8 text-muted-foreground">Como subsidiaria tecnológica de panamproject, Nexiatech transforma estrategia en capacidad técnica. Combinamos la agilidad de un equipo especializado con la solidez de un ecosistema empresarial preparado para proyectos de largo plazo.</p><a href="https://panamproject.com" target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary">Conocer panamproject <ArrowRight className="h-4 w-4" /></a></div>
+            <div><p className="font-mono text-xs uppercase text-flare">04 / Ecosistema</p><h2 className="mt-5 text-3xl font-bold sm:text-5xl">Tecnología con respaldo y visión de negocio.</h2><p className="mt-6 max-w-2xl leading-8 text-muted-foreground">Como subsidiaria tecnológica de panamproject, Nexiatech transforma estrategia en capacidad técnica. Combinamos la agilidad de un equipo especializado con la solidez de un ecosistema empresarial preparado para proyectos de largo plazo.</p><a href="https://panamproject.com" target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary">Conocer panamproject <ArrowRight className="h-4 w-4" /></a></div>
           </div></div>
         </section>
 
