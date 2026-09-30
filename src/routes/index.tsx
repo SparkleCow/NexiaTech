@@ -45,7 +45,7 @@ function NetworkVisual() {
           className="h-full w-full object-contain object-center"
         />
       </div>
-      <div className="float-panel absolute bottom-4 right-4 border border-border bg-background/90 p-3 shadow-xl backdrop-blur-sm">
+      <div className="float-panel absolute bottom-4 right-4 border border-border bg-card/90 p-3 shadow-xl backdrop-blur-sm">
         <p className="font-mono text-[10px] uppercase text-muted-foreground">Disponibilidad</p>
         <p className="mt-1 text-lg font-bold">99.99%</p>
       </div>
@@ -63,6 +63,8 @@ const projects = [
   {
     icon: SolarPanel,
     number: "01",
+    image: "/projects/paneles.jpeg",
+    imageAlt: "Campo de paneles solares fotovoltaicos con monitoreo",
     category: "Energía renovable",
     title: "Paneles solares para energía renovable",
     text: "Instalaciones fotovoltaicas diseñadas de extremo a extremo: cálculo de generación, estructura, cableado y monitoreo por string para que la planta produzca el máximo posible con el mínimo mantenimiento.",
@@ -72,6 +74,8 @@ const projects = [
   {
     icon: Cctv,
     number: "02",
+    image: "/projects/camara-p.jpeg",
+    imageAlt: "Cámara de videovigilancia autonomous con panel solar y enlace inalámbrico",
     category: "Videovigilancia autónoma",
     title: "Cámaras con paneles solares",
     text: "Cámaras de seguridad que funcionan sin conexión a la red eléctrica: panel solar integrado, batería, enlace inalámbrico y central de revisión remota.",
@@ -80,6 +84,8 @@ const projects = [
   {
     icon: Cpu,
     number: "03",
+    image: "/projects/iot.jpeg",
+    imageAlt: "Malla de sensores IoT transmitiendo telemetría en tiempo real",
     category: "Software & hardware",
     title: "Desarrollo de software con IoT",
     text: "Plataformas que conectan sensores y dispositivos en tiempo real: ingesta de telemetría, control remoto, reglas de automatización y tableros de operación.",
@@ -88,6 +94,8 @@ const projects = [
   {
     icon: Blocks,
     number: "04",
+    image: "/projects/software.jpeg",
+    imageAlt: "Arquitectura de software a medida por capas con integraciones externas",
     category: "Ingeniería a medida",
     title: "Software a la medida",
     text: "Sistemas desarrollados desde cero para tu operación, integrándose con las herramientas que ya usas. Arquitectura, backend, frontend e integraciones bajo un mismo estándar de calidad.",
@@ -96,6 +104,8 @@ const projects = [
   {
     icon: ScanFace,
     number: "05",
+    image: "/projects/camaras.gif",
+    imageAlt: "Sistema de reconocimiento facial con procesamiento en el borde",
     category: "Visión por computadora",
     title: "Cámaras de reconocimiento facial",
     text: "Reconocimiento facial para control de acceso, conteo de personas y análisis de flujo, con procesamiento en el borde y protocolos de privacidad y seguridad biométrica.",
@@ -124,7 +134,7 @@ function Index() {
 
   return (
     <div id="inicio" className="min-h-screen overflow-hidden bg-background text-foreground">
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur-xl">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/90 backdrop-blur-xl">
         <div className="mx-auto grid h-20 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 sm:px-8 lg:flex lg:justify-between">
           <Logo />
           <nav className="hidden items-center gap-8 lg:flex" aria-label="Navegación principal">
@@ -145,6 +155,7 @@ function Index() {
       <main>
         <section className="relative border-b border-border pt-36 sm:pt-44">
           <div className="absolute inset-0 -z-10 bg-[linear-gradient(var(--grid-line)_1px,transparent_1px),linear-gradient(90deg,var(--grid-line)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:linear-gradient(to_bottom,black,transparent_80%)]" />
+          <div className="absolute inset-x-0 top-0 -z-10 h-[42rem] bg-[radial-gradient(70%_60%_at_50%_-15%,var(--accent),transparent)]" />
           <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 pb-20 sm:px-8 sm:pb-28 lg:grid-cols-[1.05fr_.95fr] lg:gap-16 lg:pb-32">
             <div className="animate-fade-in">
             <h1 className="max-w-3xl text-2xl font-extrabold leading-[1.08] sm:text-4xl lg:text-5xl">
@@ -165,8 +176,8 @@ function Index() {
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
             <div className="grid gap-8 border-b border-border pb-12 lg:grid-cols-[.7fr_1.3fr] lg:items-end"><div><h2 className="mt-4 text-3xl font-bold leading-tight sm:text-5xl sm:leading-[1.15]">Del <span className="text-primary">código</span> a la operación.</h2></div><p className="max-w-2xl text-base leading-7 text-muted-foreground lg:justify-self-end">Convertimos problemas de arquitectura complejos en código limpio, infraestructura estable y sistemas listos para producción desde el día uno.</p></div>
             <div className="grid md:grid-cols-3">
-              {capabilities.map((item) => <article key={item.title} className="group border-b border-border py-10 transition-colors hover:bg-accent/40 md:border-r md:px-7 md:first:pl-0 md:last:border-r-0 md:last:pr-0">
-                <div className="flex items-center justify-between"><div className="grid h-11 w-11 place-items-center border border-border bg-surface text-primary"><item.icon className="h-5 w-5" /></div><span className="font-mono text-xs text-muted-foreground">{item.number}</span></div>
+              {capabilities.map((item) => <article key={item.title} className="group border-b border-border py-10 transition-colors hover:bg-accent/60 md:border-r md:px-7 md:first:pl-0 md:last:border-r-0 md:last:pr-0">
+                <div className="flex items-center justify-between"><div className="grid h-11 w-11 place-items-center border border-border bg-muted text-primary"><item.icon className="h-5 w-5" /></div><span className="font-mono text-xs text-muted-foreground">{item.number}</span></div>
                 <h3 className="mt-12 text-xl font-bold">{item.title}</h3><p className="mt-4 min-h-24 text-sm leading-7 text-muted-foreground">{item.text}</p>
                 <div className="mt-8 flex flex-wrap gap-2">{item.tags.map(tag => <span key={tag} className="border border-border px-2.5 py-1 font-mono text-[10px] text-muted-foreground">{tag}</span>)}</div>
               </article>)}
@@ -192,30 +203,36 @@ function Index() {
             </div>
             <div className="grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
               {projects.map((item) => (
-                <article key={item.number} className={cn("group flex flex-col bg-background p-7 transition-colors duration-300 hover:bg-surface sm:p-9", item.featured && "lg:col-span-2")}>
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="grid h-12 w-12 place-items-center border border-border bg-surface text-primary transition-colors group-hover:border-primary/50"><item.icon className="h-5 w-5" /></div>
-                    <span className="font-mono text-xs text-muted-foreground">{item.number}</span>
+                <article key={item.number} className={cn("group flex flex-col bg-card p-7 transition-colors duration-300 hover:bg-surface sm:p-9", item.featured && "lg:col-span-2")}>
+                  <div className="relative h-36 w-full overflow-hidden rounded-lg border border-border/70 bg-muted sm:h-40">
+                    <div className="absolute inset-0 bg-[linear-gradient(var(--grid-line)_1px,transparent_1px),linear-gradient(90deg,var(--grid-line)_1px,transparent_1px)] bg-[size:28px_28px]" />
+                    <div className="absolute inset-0 grid place-items-center"><item.icon className="h-6 w-6 text-muted-foreground/40" /></div>
+                    <img src={item.image} alt={item.imageAlt} loading="lazy" onError={(event) => { event.currentTarget.style.opacity = "0"; }} className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+                    <span className="absolute right-2.5 top-2.5 font-mono text-[10px] text-on-dark/70">{item.number}</span>
                   </div>
-                  <p className="mt-12 font-mono text-[10px] uppercase text-signal">{item.category}</p>
-                  <h3 className={cn("mt-3 font-bold", item.featured ? "text-2xl sm:text-3xl" : "text-xl")}>{item.title}</h3>
+                  <div className="mt-8 flex items-center gap-4">
+                    <div className="grid h-12 w-12 place-items-center border border-border bg-muted text-primary transition-colors group-hover:border-primary/50"><item.icon className="h-5 w-5" /></div>
+                    <span className="font-mono text-[10px] uppercase text-signal">{item.category}</span>
+                  </div>
+                  <h3 className={cn("mt-5 font-bold", item.featured ? "text-2xl sm:text-3xl" : "text-xl")}>{item.title}</h3>
                   <p className="mt-4 max-w-2xl text-sm leading-7 text-muted-foreground">{item.text}</p>
                   <div className="mt-8 flex flex-wrap gap-2">{item.tags.map((tag) => <span key={tag} className="border border-border px-2.5 py-1 font-mono text-[10px] text-muted-foreground">{tag}</span>)}</div>
-                  <a href={`mailto:hola@nexiatech.com?subject=${encodeURIComponent(`Proyecto: ${item.title}`)}`} className="mt-auto inline-flex items-center gap-2 self-start pt-10 text-sm font-semibold text-primary">Solicitar propuesta <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></a>
+                  <a href={`mailto:hola@nexiatech.com?subject=${encodeURIComponent(`Proyecto: ${item.title}`)}`} className="mt-auto inline-flex items-center gap-2 self-start pt-8 text-sm font-semibold text-primary">Solicitar propuesta <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></a>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="ecosistema" className="scroll-mt-20 py-24 sm:py-32">
+        <section id="ecosistema" className="scroll-mt-20 pb-10 sm:pb-28">
           <div className="mx-auto max-w-7xl px-5 sm:px-8"><div className="grid gap-12 border-y border-border py-14 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
-            <div className="relative flex min-h-72 items-center justify-center overflow-hidden bg-muted"><div className="absolute inset-0 bg-[linear-gradient(var(--grid-line)_1px,transparent_1px),linear-gradient(90deg,var(--grid-line)_1px,transparent_1px)] bg-[size:32px_32px]" /><div className="relative flex items-center gap-5"><div className="grid h-20 w-20 place-items-center border border-border bg-background shadow-xl"><ServerCog className="h-8 w-8 text-primary" /></div><div className="h-px w-12 bg-primary" /><div className="border border-border bg-background p-5 shadow-xl"><p className="font-mono text-[10px] text-muted-foreground">ECOSYSTEM</p><p className="mt-1 text-lg font-bold">panamproject</p></div></div></div>
+            <div className="relative flex min-h-72 items-center justify-center overflow-hidden border border-border bg-muted"><div className="absolute inset-0 bg-[linear-gradient(var(--grid-line)_1px,transparent_1px),linear-gradient(90deg,var(--grid-line)_1px,transparent_1px)] bg-[size:32px_32px]" /><div className="relative flex items-center gap-5"><div className="grid h-20 w-20 place-items-center border border-border bg-card shadow-xl"><ServerCog className="h-8 w-8 text-primary" /></div><div className="h-px w-12 bg-primary" /><div className="border border-border bg-card p-5 shadow-xl"><p className="font-mono text-[10px] text-muted-foreground">ECOSYSTEM</p><p className="mt-1 text-lg font-bold">panamproject</p></div></div></div>
             <div><p className="font-mono text-xs uppercase text-flare">Ecosistema</p><h2 className="mt-5 text-3xl font-bold sm:text-5xl">Tecnología con respaldo y visión de negocio.</h2><p className="mt-6 max-w-2xl leading-8 text-muted-foreground">Como subsidiaria tecnológica de panamproject, Nexiatech transforma estrategia en capacidad técnica. Combinamos la agilidad de un equipo especializado con la solidez de un ecosistema empresarial preparado para proyectos de largo plazo.</p><a href="https://panamproject.com" target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary">Conocer panamproject <ArrowRight className="h-4 w-4" /></a></div>
           </div></div>
         </section>
 
-        <section className="px-5 pb-10 sm:px-8 sm:pb-16"><div className="relative mx-auto max-w-7xl overflow-hidden bg-primary px-6 py-16 text-primary-foreground sm:px-14 sm:py-20"><div className="absolute inset-0 bg-[linear-gradient(var(--grid-line)_1px,transparent_1px),linear-gradient(90deg,var(--grid-line)_1px,transparent_1px)] bg-[size:48px_48px] opacity-30" /><div className="relative grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end"><div><p className="font-mono text-xs uppercase text-primary-foreground/70">Ready to build</p><h2 className="mt-5 max-w-3xl text-3xl font-bold leading-tight sm:text-5xl">Tu próximo sistema merece una ingeniería sin límites.</h2><p className="mt-5 max-w-xl text-primary-foreground/75">Hablemos de arquitectura, equipo y la ruta más inteligente para llevarlo a producción.</p></div><Button asChild size="lg" variant="secondary" className="h-13 px-7"><a href="mailto:hola@nexiatech.com?subject=Nuevo proyecto">Iniciar conversación <ArrowRight /></a></Button></div></div></section>
+        <section className="px-5 pb-10 sm:px-8 sm:pb-16"><div className="relative mx-auto max-w-7xl overflow-hidden bg-primary px-6 py-16 text-primary-foreground sm:px-14 sm:py-20"><div className="absolute inset-0 bg-[linear-gradient(var(--grid-line)_1px,transparent_1px),linear-gradient(90deg,var(--grid-line)_1px,transparent_1px)] bg-[size:48px_48px] opacity-30" /><div className="relative grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end"><div><p className="font-mono text-xs uppercase text-primary-foreground/80">Ready to build</p><h2 className="mt-5 max-w-3xl text-3xl font-bold leading-tight text-primary-foreground sm:text-5xl">Tu próximo sistema merece una ingeniería sin límites.</h2><p className="mt-5 max-w-xl text-primary-foreground/85">Hablemos de arquitectura, equipo y la ruta más inteligente para llevarlo a producción.</p></div><Button asChild size="lg" variant="secondary" className="h-13 px-7"><a href="mailto:hola@nexiatech.com?subject=Nuevo proyecto">Iniciar conversación <ArrowRight /></a></Button></div></div></section>
       </main>
 
       <footer className="border-t border-border"><div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-8 md:grid-cols-[1fr_auto] md:items-end"><div><Logo /><p className="mt-4 max-w-md text-sm leading-6 text-muted-foreground">Ingeniería de software e infraestructura tecnológica. Una empresa del ecosistema panamproject.</p><p className="mt-8 text-xs text-muted-foreground">© 2026 Nexiatech. Todos los derechos reservados.</p></div><div className="flex items-center gap-2"><Button variant="outline" size="icon" asChild><a href="https://github.com" target="_blank" rel="noreferrer" aria-label="GitHub"><Github /></a></Button><Button variant="outline" size="icon" asChild><a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin /></a></Button></div></div></footer>
