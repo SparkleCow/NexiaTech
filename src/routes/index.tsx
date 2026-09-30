@@ -35,23 +35,26 @@ function Logo() {
 }
 
 function NetworkVisual() {
-  return <div className="relative mx-auto aspect-square w-full max-w-[600px] overflow-hidden rounded-md border border-border bg-surface shadow-2xl shadow-primary/10">
-    <div className="absolute inset-0 bg-[linear-gradient(var(--grid-line)_1px,transparent_1px),linear-gradient(90deg,var(--grid-line)_1px,transparent_1px)] bg-[size:42px_42px]" />
-    <div className="absolute inset-0 h-full w-full p-8">
-      <img 
-        src="/back.jpeg" 
-        alt="Fotografía macro de un prototipo de circuito impreso Nexiatech para IoT de misión crítica"
-        className="h-full w-full object-contain object-center"
-      />
+  return (
+    <div className="relative mx-auto aspect-square w-full max-w-[450px] overflow-hidden rounded-md border border-border bg-surface shadow-2xl shadow-primary/10">
+      <div className="absolute inset-0 bg-[linear-gradient(var(--grid-line)_1px,transparent_1px),linear-gradient(90deg,var(--grid-line)_1px,transparent_1px)] bg-[size:42px_42px]" />
+      <div className="absolute inset-0 h-full w-full p-10">
+        <img 
+          src="/back.jpeg" 
+          alt="Fotografía macro de un prototipo de circuito impreso Nexiatech para IoT de misión crítica"
+          className="h-full w-full object-contain object-center"
+        />
+      </div>
+      <div className="float-panel absolute bottom-4 right-4 border border-border bg-background/90 p-3 shadow-xl backdrop-blur-sm">
+        <p className="font-mono text-[10px] uppercase text-muted-foreground">Disponibilidad</p>
+        <p className="mt-1 text-lg font-bold">99.99%</p>
+      </div>
     </div>
-    <div className="float-panel absolute bottom-5 right-5 border border-border bg-background/90 p-4 shadow-xl backdrop-blur-sm">
-      <p className="font-mono text-[10px] uppercase text-muted-foreground">Disponibilidad</p><p className="mt-1 text-xl font-bold">99.99%</p>
-    </div>
-  </div>;
+  );
 }
 
 const capabilities = [
-  { icon: Boxes, number: "01", title: "Desarrollo Full-Stack", text: "Productos digitales robustos con Angular, Spring Boot y arquitecturas diseñadas para evolucionar.", tags: ["Angular", "Spring Boot", "APIs"] },
+  { icon: Boxes, number: "01", title: "Desarrollo Full-Stack", text: "Productos digitales robustos con arquitecturas diseñadas para escalabilidad.", tags: ["Backend", "Bases de datos", "APIs"] },
   { icon: CloudCog, number: "02", title: "Cloud & DevOps", text: "Infraestructura automatizada, despliegues continuos y entornos cloud preparados para crecer sin fricción.", tags: ["Cloud", "CI/CD", "Containers"] },
   { icon: Network, number: "03", title: "Redes & Observabilidad", text: "Telemetría, monitoreo y redes de alto rendimiento para operaciones siempre visibles y disponibles.", tags: ["Monitoring", "Networks", "SRE"] },
 ];
@@ -144,8 +147,10 @@ function Index() {
           <div className="absolute inset-0 -z-10 bg-[linear-gradient(var(--grid-line)_1px,transparent_1px),linear-gradient(90deg,var(--grid-line)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:linear-gradient(to_bottom,black,transparent_80%)]" />
           <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 pb-20 sm:px-8 sm:pb-28 lg:grid-cols-[1.05fr_.95fr] lg:gap-16 lg:pb-32">
             <div className="animate-fade-in">
-              <h1 className="max-w-3xl text-4xl font-extrabold leading-[1.08] sm:text-6xl lg:text-7xl">Ingeniería que conecta <span className="text-primary">software</span>, infraestructura y futuro.</h1>
-              <p className="mt-7 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">Transformamos ideas complejas en infraestructura inteligente. Nexiatech es el socio de ingeniería y desarrollo IoT para productos que no pueden permitirse fallar.</p>
+            <h1 className="max-w-3xl text-2xl font-extrabold leading-[1.08] sm:text-4xl lg:text-5xl">
+              Ingeniería que conecta <span className="text-primary">software</span>, infraestructura y futuro.
+            </h1>           
+             <p className="mt-7 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">Transformamos ideas complejas en infraestructura inteligente. Nexiatech es el socio de ingeniería y desarrollo IoT para productos que no pueden permitirse fallar.</p>
               <div className="mt-10 flex flex-col gap-3 sm:flex-row">
                 <Button asChild size="lg" className="h-13 px-7"><a href="mailto:hola@nexiatech.com?subject=Cotización de desarrollo">Cotizar desarrollo <ArrowRight /></a></Button>
                 <Button asChild variant="outline" size="lg" className="h-13 px-7"><a href="#infraestructura">Ver arquitectura <ArrowDownRight /></a></Button>
@@ -156,9 +161,9 @@ function Index() {
           </div>
         </section>
 
-        <section id="servicios" className="scroll-mt-20 py-24 sm:py-32">
+        <section id="servicios" className="scroll-mt-20 py-18 sm:py-26">
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
-            <div className="grid gap-8 border-b border-border pb-12 lg:grid-cols-[.7fr_1.3fr] lg:items-end"><div><p className="font-mono text-xs uppercase text-primary">01 / Capacidades</p><h2 className="mt-4 text-3xl font-bold sm:text-5xl">Del código a la operación.</h2></div><p className="max-w-2xl text-base leading-7 text-muted-foreground lg:justify-self-end">Un equipo multidisciplinario que traduce retos complejos en sistemas simples, mantenibles y listos para producción.</p></div>
+            <div className="grid gap-8 border-b border-border pb-12 lg:grid-cols-[.7fr_1.3fr] lg:items-end"><div><h2 className="mt-4 text-3xl font-bold leading-tight sm:text-5xl sm:leading-[1.15]">Del <span className="text-primary">código</span> a la operación.</h2></div><p className="max-w-2xl text-base leading-7 text-muted-foreground lg:justify-self-end">Convertimos problemas de arquitectura complejos en código limpio, infraestructura estable y sistemas listos para producción desde el día uno.</p></div>
             <div className="grid md:grid-cols-3">
               {capabilities.map((item) => <article key={item.title} className="group border-b border-border py-10 transition-colors hover:bg-accent/40 md:border-r md:px-7 md:first:pl-0 md:last:border-r-0 md:last:pr-0">
                 <div className="flex items-center justify-between"><div className="grid h-11 w-11 place-items-center border border-border bg-surface text-primary"><item.icon className="h-5 w-5" /></div><span className="font-mono text-xs text-muted-foreground">{item.number}</span></div>
@@ -171,18 +176,18 @@ function Index() {
 
         <section id="infraestructura" className="scroll-mt-20 bg-surface-strong py-24 text-on-dark sm:py-32">
           <div className="mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-2 lg:items-center">
-            <div><p className="font-mono text-xs uppercase text-signal">02 / Infraestructura</p><h2 className="mt-5 text-3xl font-bold leading-tight sm:text-5xl">Construida para resistir.<br />Diseñada para avanzar.</h2><p className="mt-6 max-w-xl leading-8 text-on-dark/65">Unificamos aplicación, nube, redes y observabilidad en una sola arquitectura operable. Menos puntos ciegos. Más velocidad de entrega.</p></div>
+            <div><p className="font-mono text-xs uppercase text-signal">Infraestructura</p><h2 className="mt-5 text-3xl font-bold leading-tight sm:text-5xl">Construida para resistir.<br />Diseñada para avanzar.</h2><p className="mt-6 max-w-xl leading-8 text-on-dark/65">Unificamos aplicación, nube, redes y observabilidad en una sola arquitectura operable. Menos puntos ciegos. Más velocidad de entrega.</p></div>
             <div className="border border-on-dark/15 bg-on-dark/5 p-5 sm:p-8">
-              <div className="mb-7 flex items-center justify-between border-b border-on-dark/15 pb-5"><span className="font-mono text-xs text-on-dark/55">NEXIA / CORE</span><span className="flex items-center gap-2 font-mono text-[10px] text-signal"><span className="h-2 w-2 rounded-full bg-signal node-pulse" />OPERATIONAL</span></div>
-              {["Application layer", "Cloud orchestration", "Network fabric", "Observability"].map((label, index) => <div key={label} className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-4 border-b border-on-dark/10 py-4 last:border-0"><span className="font-mono text-[10px] text-on-dark/35">0{index + 1}</span><span className="truncate text-sm">{label}</span><span className="h-1.5 w-16 bg-on-dark/10"><span className="block h-full bg-signal" style={{ width: `${88 + index * 3}%` }} /></span></div>)}
+              <div className="mb-7 flex items-center justify-between border-b border-on-dark/15 pb-5"><span className="flex items-center gap-2 font-mono text-[10px] text-signal"><span className="h-2 w-2 rounded-full bg-signal node-pulse" />OPERATIVO</span></div>
+              {["Código", "Orquestación y despliegue", "Conectividad y redes", "Monitoreo y telemetría"].map((label, index) => (<div key={label} className="grid grid-cols-[auto_1fr] items-center gap-4 border-b border-on-dark/10 py-4 last:border-0"><span className="font-mono text-[10px] text-on-dark/35">0{index + 1}</span><span className="truncate text-sm">{label}</span></div>))}
             </div>
           </div>
         </section>
 
-        <section id="proyectos" className="scroll-mt-20 py-24 sm:py-32">
+        <section id="proyectos" className="scroll-mt-20 py-20 sm:py-28">
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
             <div className="grid gap-8 pb-12 lg:grid-cols-[.7fr_1.3fr] lg:items-end">
-              <div><p className="font-mono text-xs uppercase text-primary">03 / Proyectos</p><h2 className="mt-4 text-3xl font-bold sm:text-5xl">Ingeniería aplicada<br className="hidden sm:block" /> a problemas reales.</h2></div>
+              <div><p className="font-mono text-xs uppercase text-primary">Proyectos</p><h2 className="mt-4 text-3xl font-bold sm:text-5xl">Ingeniería aplicada<br className="hidden sm:block" /> a problemas reales.</h2></div>
               <p className="max-w-2xl text-base leading-7 text-muted-foreground lg:justify-self-end">Cinco líneas donde convergen energía, hardware y software. Sistemas completos, desde la ingeniería inicial hasta la operación diaria.</p>
             </div>
             <div className="grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
@@ -206,7 +211,7 @@ function Index() {
         <section id="ecosistema" className="scroll-mt-20 py-24 sm:py-32">
           <div className="mx-auto max-w-7xl px-5 sm:px-8"><div className="grid gap-12 border-y border-border py-14 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
             <div className="relative flex min-h-72 items-center justify-center overflow-hidden bg-muted"><div className="absolute inset-0 bg-[linear-gradient(var(--grid-line)_1px,transparent_1px),linear-gradient(90deg,var(--grid-line)_1px,transparent_1px)] bg-[size:32px_32px]" /><div className="relative flex items-center gap-5"><div className="grid h-20 w-20 place-items-center border border-border bg-background shadow-xl"><ServerCog className="h-8 w-8 text-primary" /></div><div className="h-px w-12 bg-primary" /><div className="border border-border bg-background p-5 shadow-xl"><p className="font-mono text-[10px] text-muted-foreground">ECOSYSTEM</p><p className="mt-1 text-lg font-bold">panamproject</p></div></div></div>
-            <div><p className="font-mono text-xs uppercase text-flare">04 / Ecosistema</p><h2 className="mt-5 text-3xl font-bold sm:text-5xl">Tecnología con respaldo y visión de negocio.</h2><p className="mt-6 max-w-2xl leading-8 text-muted-foreground">Como subsidiaria tecnológica de panamproject, Nexiatech transforma estrategia en capacidad técnica. Combinamos la agilidad de un equipo especializado con la solidez de un ecosistema empresarial preparado para proyectos de largo plazo.</p><a href="https://panamproject.com" target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary">Conocer panamproject <ArrowRight className="h-4 w-4" /></a></div>
+            <div><p className="font-mono text-xs uppercase text-flare">Ecosistema</p><h2 className="mt-5 text-3xl font-bold sm:text-5xl">Tecnología con respaldo y visión de negocio.</h2><p className="mt-6 max-w-2xl leading-8 text-muted-foreground">Como subsidiaria tecnológica de panamproject, Nexiatech transforma estrategia en capacidad técnica. Combinamos la agilidad de un equipo especializado con la solidez de un ecosistema empresarial preparado para proyectos de largo plazo.</p><a href="https://panamproject.com" target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary">Conocer panamproject <ArrowRight className="h-4 w-4" /></a></div>
           </div></div>
         </section>
 
