@@ -342,31 +342,39 @@ function Index() {
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
             <div className="grid gap-8 border-b border-border pb-12 lg:grid-cols-[.7fr_1.3fr] lg:items-end">
               <div>
-                <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-5xl sm:leading-[1.15]">
+                <h2 className="mb-9 text-3xl font-bold leading-tight sm:text-5xl sm:leading-[1.15]">
                   Del <span className="text-primary">código</span> a la operación.
                 </h2>
               </div>
-              <p className="max-w-2xl text-base leading-7 text-muted-foreground lg:justify-self-end">
-                Convertimos problemas de arquitectura complejos en código limpio, infraestructura
-                estable y sistemas listos para producción desde el día uno.
+              <p className="max-w-2xl mb-9 text-base leading-7 text-muted-foreground lg:justify-self-end">
+                Traducimos retos complejos de arquitectura en código mantenible, infraestructura
+                cloud estable y sistemas blindados para producción desde el día uno. Aceleramos el
+                ciclo de vida del software con despliegues automatizados, asegurando que cada
+                producto crezca con total estabilidad técnica.
               </p>
             </div>
+
+            {/* Mantenemos el grid unificado pero añadimos padding interno (p-8) a cada article */}
             <div className="grid md:grid-cols-3">
               {capabilities.map((item) => (
                 <article
                   key={item.title}
-                  className="group border-b border-border py-10 transition-colors hover:bg-accent/60 md:border-r md:px-7 md:first:pl-0 md:last:border-r-0 md:last:pr-0"
+                  className="group flex flex-col justify-between border-b border-border py-10 transition-colors hover:bg-accent/60 md:border-r md:last:border-r-0 p-8 sm:p-10 cursor-pointer"
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="grid h-11 w-11 place-items-center border border-border bg-muted text-primary">
-                      <item.icon className="h-5 w-5" />
+                  <div>
+                    <div className="flex items-center justify-between">
+                      <div className="grid h-11 w-11 place-items-center border border-border bg-muted text-primary">
+                        <item.icon className="h-5 w-5" />
+                      </div>
+                      <span className="font-msono text-xs text-muted-foreground">
+                        {item.number}
+                      </span>
                     </div>
-                    <span className="font-mono text-xs text-muted-foreground">{item.number}</span>
+                    <h3 className="mt-12 text-xl font-bold">{item.title}</h3>
+                    <p className="mt-4 min-h-24 text-sm leading-7 text-muted-foreground">
+                      {item.text}
+                    </p>
                   </div>
-                  <h3 className="mt-12 text-xl font-bold">{item.title}</h3>
-                  <p className="mt-4 min-h-24 text-sm leading-7 text-muted-foreground">
-                    {item.text}
-                  </p>
                   <div className="mt-8 flex flex-wrap gap-2">
                     {item.tags.map((tag) => (
                       <span
@@ -425,19 +433,19 @@ function Index() {
           </div>
         </section>
 
-        <section id="proyectos" className="scroll-mt-20 py-20 sm:py-28">
+        <section id="proyectos" className="scroll-mt-10 sm:py-20">
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
-            <div className="grid gap-8 pb-12 lg:grid-cols-[.7fr_1.3fr] lg:items-end">
+            <div className="grid gap-8 pb-24 lg:grid-cols-2 lg:items-end">
               <div>
-                <p className="font-mono text-xs uppercase text-primary">Proyectos</p>
                 <h2 className="mt-4 text-3xl font-bold sm:text-5xl">
-                  Ingeniería aplicada
+                  <span className="text-primary">Ingeniería</span> aplicada
                   <br className="hidden sm:block" /> a problemas reales.
                 </h2>
               </div>
-              <p className="max-w-2xl text-base leading-7 text-muted-foreground lg:justify-self-end">
-                Cinco líneas donde convergen energía, hardware y software. Sistemas completos, desde
-                la ingeniería inicial hasta la operación diaria.
+              <p className="max-w-xl text-base leading-7 text-muted-foreground lg:justify-self-end">
+                Soluciones tecnológicas de extremo a extremo. Fusionamos ingeniería de software
+                moderna, infraestructura cloud robusta y automatización para escalar operaciones
+                reales."
               </p>
             </div>
             <div className="grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
@@ -445,7 +453,7 @@ function Index() {
                 <article
                   key={item.number}
                   className={cn(
-                    "group flex flex-col bg-card p-7 transition-colors duration-300 hover:bg-surface sm:p-9",
+                    "group flex flex-col bg-card p-7 transition-colors duration-300 hover:bg-surface sm:p-9 cursor-pointer",
                     item.featured && "lg:col-span-2",
                   )}
                 >
@@ -534,7 +542,7 @@ function Index() {
                   />
                   <div className="absolute bottom-3 left-3 z-20 flex items-center gap-2 rounded-md bg-background/90 px-3 py-1.5 font-mono text-[10px] backdrop-blur-md border border-border shadow-lg">
                     <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-                    <span className="text-muted-foreground">SYS_VIEW // ACTIVE</span>
+                    <span className="text-muted-foreground">NexiaTech</span>
                   </div>
                 </div>
               </div>
@@ -567,7 +575,7 @@ function Index() {
             <div className="relative grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
               <div>
                 <p className="font-mono text-xs uppercase text-primary-foreground/80">
-                  Ready to build
+                  LISTOS PARA CONSTRUIR
                 </p>
                 <h2 className="mt-5 max-w-3xl text-3xl font-bold leading-tight text-primary-foreground sm:text-5xl">
                   Tu próximo sistema merece una ingeniería sin límites.
