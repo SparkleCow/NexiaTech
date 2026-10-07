@@ -86,14 +86,14 @@ function NetworkVisual() {
       <div className="absolute inset-0 bg-[linear-gradient(var(--grid-line)_1px,transparent_1px),linear-gradient(90deg,var(--grid-line)_1px,transparent_1px)] bg-[size:42px_42px]" />
       <div className="absolute inset-0 h-full w-full p-10">
         <img
-          src="/back.jpeg"
+          src="/projects/program.jpeg"
           alt="Fotografía macro de un prototipo de circuito impreso Nexiatech para IoT de misión crítica"
           className="h-full w-full object-contain object-center"
         />
       </div>
       <div className="float-panel absolute bottom-4 right-4 border border-border bg-card/90 p-3 shadow-xl backdrop-blur-sm">
         <p className="font-mono text-[10px] uppercase text-muted-foreground">Disponibilidad</p>
-        <p className="mt-1 text-lg font-bold">99.99%</p>
+        <p className="mt-1 text-lg font-bold">99.999%</p>
       </div>
     </div>
   );
