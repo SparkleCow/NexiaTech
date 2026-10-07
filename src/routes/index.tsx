@@ -177,6 +177,27 @@ const projects = [
   },
 ];
 
+const footerNav = [
+  {
+    title: "Servicios",
+    links: [
+      { label: "Desarrollo Full-Stack", href: "#servicios" },
+      { label: "Cloud & DevOps", href: "#servicios" },
+      { label: "Redes & Observabilidad", href: "#servicios" },
+      { label: "IoT & Telemetría", href: "#proyectos" },
+    ],
+  },
+  {
+    title: "Compañía",
+    links: [
+      { label: "Infraestructura", href: "#infraestructura" },
+      { label: "Proyectos", href: "#proyectos" },
+      { label: "Ecosistema", href: "#ecosistema" },
+      { label: "Contacto", href: "#contacto" },
+    ],
+  },
+];
+
 function Index() {
   const [dark, setDark] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -569,7 +590,7 @@ function Index() {
           </div>
         </section>
 
-        <section className="px-5 pb-10 sm:px-8 sm:pb-16">
+        <section id="contacto" className="scroll-mt-20 px-5 pb-10 sm:px-8 sm:pb-16">
           <div className="relative mx-auto max-w-7xl overflow-hidden bg-primary px-6 py-16 text-primary-foreground sm:px-14 sm:py-20">
             <div className="absolute inset-0 bg-[linear-gradient(var(--grid-line)_1px,transparent_1px),linear-gradient(90deg,var(--grid-line)_1px,transparent_1px)] bg-[size:48px_48px] opacity-30" />
             <div className="relative grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
@@ -618,30 +639,105 @@ function Index() {
         </div>
       </div>
 
-      <footer className="border-t border-border">
-        <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-8 md:grid-cols-[1fr_auto] md:items-end">
-          <div>
-            <Logo />
-            <p className="mt-4 max-w-md text-sm leading-6 text-muted-foreground">
-              Ingeniería de software e infraestructura tecnológica. Una empresa del ecosistema
-              panamproject.
-            </p>
-            <p className="mt-8 text-xs text-muted-foreground">
-              © 2026 Nexiatech. Todos los derechos reservados.
-            </p>
+      <footer className="border-t border-border bg-card/50 text-muted-foreground">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <div className="grid gap-10 py-14 sm:py-16 md:grid-cols-[1.7fr_1fr_1fr_1.3fr]">
+            {/* Marca, propuesta de valor y contacto social */}
+            <div className="max-w-sm">
+              <Logo />
+              <p className="mt-4 text-sm leading-6">
+                Ingeniería de software e infraestructura tecnológica. Infraestructura resiliente,
+                desarrollo full-stack y observabilidad de redes de alta disponibilidad.
+              </p>
+              <div className="mt-5 flex items-center gap-2">
+                <span className="font-mono text-[11px] uppercase text-signal">
+                  Disponible para nuevos proyectos
+                </span>
+              </div>
+              <div className="mt-6 flex items-center gap-2">
+                <Button variant="outline" size="icon" asChild>
+                  <a href="https://github.com" target="_blank" rel="noreferrer" aria-label="GitHub">
+                    <Github />
+                  </a>
+                </Button>
+                <Button variant="outline" size="icon" asChild>
+                  <a
+                    href="https://linkedin.com"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="LinkedIn"
+                  >
+                    <Linkedin />
+                  </a>
+                </Button>
+              </div>
+            </div>
+
+            {/* Enlaces rápidos (rellenar según contenido final) */}
+            {footerNav.map((column) => (
+              <div key={column.title}>
+                <p className="font-mono text-xs uppercase tracking-wider text-primary">
+                  {column.title}
+                </p>
+                <ul className="mt-4 space-y-2.5">
+                  {column.links.map((link) => (
+                    <li key={link.label}>
+                      <a
+                        href={link.href}
+                        className="text-sm transition-colors hover:text-foreground"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+
+            {/* Contacto directo */}
+            <div>
+              <p className="font-mono text-xs uppercase tracking-wider text-primary">Contacto</p>
+              <ul className="mt-4 space-y-2.5 text-sm">
+                <li>
+                  <a
+                    href="nexiatech@panamproject.com"
+                    className="transition-colors hover:text-foreground"
+                  >
+                    nexiatech@panamproject.com
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://wa.me/573243656689"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="transition-colors hover:text-foreground"
+                  >
+                    +57 324 365 6689
+                  </a>
+                </li>
+                <li>Bogotá, Colombia · Carrera 14 # 147 – 05</li>
+                <li>Lun–Vie · 9:00–18:00 (GMT-5)</li>
+              </ul>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <Button variant="outline" size="icon" asChild>
-              <a href="https://github.com" target="_blank" rel="noreferrer" aria-label="GitHub">
-                <Github />
-              </a>
-            </Button>
-            <Button variant="outline" size="icon" asChild>
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-                <Linkedin />
-              </a>
-            </Button>
+
+          {/* Barra inferior de cierre */}
+          <div className="flex flex-col gap-3 border-t border-border py-6 text-xs sm:flex-row sm:items-center sm:justify-between">
+            <p>
+              © {new Date().getFullYear()} Nexiatech. Todos los derechos reservados. · Empresa del
+              ecosistema panamproject.
+            </p>
+            <div className="flex items-center gap-4">
+              <span className="transition-colors hover:text-foreground">Privacidad</span>
+              <span className="transition-colors hover:text-foreground">Términos</span>
+            </div>
           </div>
+
+          {/* Crédito de desarrollo: discreto a propósito */}
+          <p className="pb-5 text-center text-[10px] tracking-wide text-muted-foreground/40 transition-colors hover:text-muted-foreground">
+            Development by SparkleCow
+          </p>
         </div>
       </footer>
     </div>
