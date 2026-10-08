@@ -82,7 +82,7 @@ function Whatsapp({ className = "" }) {
 
 function NetworkVisual() {
   return (
-    <div className="relative mx-auto aspect-square w-full max-w-[450px] overflow-hidden rounded-md border border-border bg-surface shadow-2xl shadow-primary/10">
+    <div className="relative mx-auto aspect-square w-full max-w-[450px] overflow-hidden rounded-md border border-white/10 bg-slate-900 shadow-2xl shadow-primary/10 dark:border-border dark:bg-surface">
       <div className="absolute inset-0 bg-[linear-gradient(var(--grid-line)_1px,transparent_1px),linear-gradient(90deg,var(--grid-line)_1px,transparent_1px)] bg-[size:42px_42px]" />
       <div className="absolute inset-0 h-full w-full p-10">
         <img
@@ -219,7 +219,7 @@ function Index() {
 
   return (
     <div id="inicio" className="min-h-screen overflow-hidden bg-background text-foreground">
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/90 backdrop-blur-xl">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[oklch(0.16_0.045_252)]/90 backdrop-blur-xl dark:border-border dark:bg-background/90">
         <div className="mx-auto grid h-20 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 sm:px-8 lg:flex lg:justify-between">
           {/* Estilos para la animación de entrada (puedes ponerlos junto a tus estilos globales o aquí mismo) */}
           <style>{`
@@ -238,25 +238,25 @@ function Index() {
             }
           `}</style>
           {/* Aquí envuelves tu Logo dentro del div animado dentro del header */}
-          <div className="animate-slide-left">
+          <div className="animate-slide-left [&_a]:text-white [&_a>span>span]:text-[oklch(0.72_0.16_243)]">
             <Logo />
           </div>{" "}
           <nav className="hidden items-center gap-8 lg:flex" aria-label="Navegación principal">
             <a
               href="#infraestructura"
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="text-sm text-white/80 transition-colors hover:text-white dark:text-muted-foreground dark:hover:text-foreground"
             >
               Infraestructura
             </a>
             <a
               href="#proyectos"
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="text-sm text-white/80 transition-colors hover:text-white dark:text-muted-foreground dark:hover:text-foreground"
             >
               Proyectos
             </a>
             <a
               href="#ecosistema"
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="text-sm text-white/80 transition-colors hover:text-white dark:text-muted-foreground dark:hover:text-foreground"
             >
               Ecosistema
             </a>
@@ -268,6 +268,7 @@ function Index() {
               onClick={() => setDark(!dark)}
               aria-label={dark ? "Activar modo claro" : "Activar modo oscuro"}
               title={dark ? "Modo claro" : "Modo oscuro"}
+              className="text-white hover:bg-white/10 hover:text-white dark:text-foreground dark:hover:bg-accent dark:hover:text-accent-foreground"
             >
               {dark ? <Sun /> : <Moon />}
             </Button>
@@ -288,7 +289,7 @@ function Index() {
           </div>
         </div>
         {menuOpen && (
-          <nav className="border-t border-border bg-background p-5 lg:hidden">
+          <nav className="border-t border-white/10 bg-[oklch(0.16_0.045_252)] p-5 text-white lg:hidden dark:border-border dark:bg-background dark:text-foreground">
             <div className="mx-auto grid max-w-7xl gap-1">
               <a onClick={() => setMenuOpen(false)} href="#servicios" className="py-3 text-sm">
                 Servicios
@@ -380,7 +381,7 @@ function Index() {
               {capabilities.map((item) => (
                 <article
                   key={item.title}
-                  className="group flex flex-col justify-between border-b border-border py-10 transition-colors hover:bg-accent/60 md:border-r md:last:border-r-0 p-8 sm:p-10 cursor-pointer"
+                  className="group flex flex-col justify-between border-b border-border py-10 transition-all duration-300 hover:bg-accent/60 md:border-r md:last:border-r-0 p-8 sm:p-10 cursor-pointer dark:bg-accent/60 dark:hover:bg-slate-800 dark:hover:border-blue-500/50 dark:hover:shadow-[0_4px_14px_-4px_rgba(59,130,246,0.25)] dark:hover:shadow-blue-500/25"
                 >
                   <div>
                     <div className="flex items-center justify-between">
@@ -474,11 +475,11 @@ function Index() {
                 <article
                   key={item.number}
                   className={cn(
-                    "group flex flex-col bg-card p-7 transition-colors duration-300 hover:bg-surface sm:p-9 cursor-pointer",
+                    "group relative flex flex-col bg-card p-7 transition-all duration-300 hover:bg-muted hover:shadow-2xl hover:shadow-black/15 hover:ring-1 hover:ring-foreground/15 sm:p-9 cursor-pointer dark:border dark:border-transparent dark:bg-surface dark:hover:bg-slate-800 dark:hover:border-blue-500/50 dark:hover:ring-0 dark:hover:shadow-[0_4px_14px_-4px_rgba(59,130,246,0.25)] dark:hover:shadow-blue-500/25",
                     item.featured && "lg:col-span-2",
                   )}
                 >
-                  <div className="relative h-36 w-full overflow-hidden rounded-lg border border-border/70 bg-muted sm:h-40">
+                  <div className="relative h-36 w-full overflow-hidden rounded-lg border border-foreground/20 bg-muted shadow-[0_12px_30px_-14px_rgba(15,23,42,0.5)] sm:h-40 dark:border-border/70 dark:shadow-none">
                     <div className="absolute inset-0 bg-[linear-gradient(var(--grid-line)_1px,transparent_1px),linear-gradient(90deg,var(--grid-line)_1px,transparent_1px)] bg-[size:28px_28px]" />
                     <div className="absolute inset-0 grid place-items-center">
                       <item.icon className="h-6 w-6 text-muted-foreground/40" />
@@ -490,9 +491,9 @@ function Index() {
                       onError={(event) => {
                         event.currentTarget.style.opacity = "0";
                       }}
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                      className="absolute inset-0 h-full w-full object-cover contrast-125 saturate-[1.15] transition-transform duration-500 group-hover:scale-[1.04] dark:contrast-100 dark:saturate-100"
                     />
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 to-transparent dark:from-background/60" />
                     <span className="absolute right-2.5 top-2.5 font-mono text-[10px] text-on-dark/70">
                       {item.number}
                     </span>
@@ -542,8 +543,8 @@ function Index() {
         <section id="ecosistema" className="scroll-mt-20 pb-10 sm:pb-28">
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
             <div className="grid gap-12 border-y border-border py-14 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
-              <div className="relative group w-full overflow-hidden rounded-2xl border border-border bg-card/60 shadow-2xl backdrop-blur-md transition-all duration-300 hover:border-primary/40">
-                <div className="flex items-center justify-between border-b border-border/60 bg-muted/40 px-4 py-3">
+              <div className="relative group w-full overflow-hidden rounded-2xl border border-foreground/25 bg-card/60 shadow-2xl backdrop-blur-md transition-all duration-300 hover:border-primary/40 dark:border-border">
+                <div className="flex items-center justify-between border-b border-foreground/15 bg-muted/40 px-4 py-3 dark:border-border/60">
                   <div className="flex items-center space-x-2">
                     <div className="h-3 w-3 rounded-full bg-red-500/80" />
                     <div className="h-3 w-3 rounded-full bg-yellow-500/80" />
@@ -561,7 +562,7 @@ function Index() {
                     alt="Nexiatech System Preview"
                     className="h-full w-full object-cover object-center filter grayscale-[25%] contrast-110 brightness-95 transition-transform duration-700 ease-out group-hover:scale-105 group-hover:grayscale-0"
                   />
-                  <div className="absolute bottom-3 left-3 z-20 flex items-center gap-2 rounded-md bg-background/90 px-3 py-1.5 font-mono text-[10px] backdrop-blur-md border border-border shadow-lg">
+                  <div className="absolute bottom-3 left-3 z-20 flex items-center gap-2 rounded-md bg-background/90 px-3 py-1.5 font-mono text-[10px] backdrop-blur-md border border-foreground/20 shadow-lg dark:border-border">
                     <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
                     <span className="text-muted-foreground">NexiaTech</span>
                   </div>
@@ -591,7 +592,7 @@ function Index() {
         </section>
 
         <section id="contacto" className="scroll-mt-20 px-5 pb-10 sm:px-8 sm:pb-16">
-          <div className="relative mx-auto max-w-7xl overflow-hidden bg-primary px-6 py-16 text-primary-foreground sm:px-14 sm:py-20">
+          <div className="relative mx-auto max-w-7xl overflow-hidden bg-surface-strong px-6 py-16 text-primary-foreground sm:px-14 sm:py-20 dark:bg-primary">
             <div className="absolute inset-0 bg-[linear-gradient(var(--grid-line)_1px,transparent_1px),linear-gradient(90deg,var(--grid-line)_1px,transparent_1px)] bg-[size:48px_48px] opacity-30" />
             <div className="relative grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
               <div>
@@ -639,28 +640,40 @@ function Index() {
         </div>
       </div>
 
-      <footer className="border-t border-border bg-card/50 text-muted-foreground">
+      <footer className="border-t border-white/15 bg-surface-strong text-white dark:border-border dark:bg-card/50 dark:text-muted-foreground">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid gap-10 py-14 sm:py-16 md:grid-cols-[1.7fr_1fr_1fr_1.3fr]">
             {/* Marca, propuesta de valor y contacto social */}
             <div className="max-w-sm">
-              <Logo />
+              <div className="[&_a]:text-white [&_a>span>span]:text-[oklch(0.72_0.16_243)]">
+                <Logo />
+              </div>
               <p className="mt-4 text-sm leading-6">
                 Ingeniería de software e infraestructura tecnológica. Infraestructura resiliente,
                 desarrollo full-stack y observabilidad de redes de alta disponibilidad.
               </p>
               <div className="mt-5 flex items-center gap-2">
-                <span className="font-mono text-[11px] uppercase text-signal">
+                <span className="font-mono text-[11px] uppercase text-[oklch(0.75_0.16_158)] dark:text-signal">
                   Disponible para nuevos proyectos
                 </span>
               </div>
               <div className="mt-6 flex items-center gap-2">
-                <Button variant="outline" size="icon" asChild>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  asChild
+                  className="text-foreground dark:text-muted-foreground"
+                >
                   <a href="https://github.com" target="_blank" rel="noreferrer" aria-label="GitHub">
                     <Github />
                   </a>
                 </Button>
-                <Button variant="outline" size="icon" asChild>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  asChild
+                  className="text-foreground dark:text-muted-foreground"
+                >
                   <a
                     href="https://linkedin.com"
                     target="_blank"
@@ -676,7 +689,7 @@ function Index() {
             {/* Enlaces rápidos (rellenar según contenido final) */}
             {footerNav.map((column) => (
               <div key={column.title}>
-                <p className="font-mono text-xs uppercase tracking-wider text-primary">
+                <p className="font-mono text-xs uppercase tracking-wider text-white dark:text-primary">
                   {column.title}
                 </p>
                 <ul className="mt-4 space-y-2.5">
@@ -684,7 +697,7 @@ function Index() {
                     <li key={link.label}>
                       <a
                         href={link.href}
-                        className="text-sm transition-colors hover:text-foreground"
+                        className="text-sm transition-colors hover:text-[oklch(0.72_0.16_243)] dark:hover:text-foreground"
                       >
                         {link.label}
                       </a>
@@ -696,12 +709,14 @@ function Index() {
 
             {/* Contacto directo */}
             <div>
-              <p className="font-mono text-xs uppercase tracking-wider text-primary">Contacto</p>
+              <p className="font-mono text-xs uppercase tracking-wider text-white dark:text-primary">
+                Contacto
+              </p>
               <ul className="mt-4 space-y-2.5 text-sm">
                 <li>
                   <a
                     href="nexiatech@panamproject.com"
-                    className="transition-colors hover:text-foreground"
+                    className="transition-colors hover:text-[oklch(0.72_0.16_243)] dark:hover:text-foreground"
                   >
                     nexiatech@panamproject.com
                   </a>
@@ -711,7 +726,7 @@ function Index() {
                     href="https://wa.me/573243656689"
                     target="_blank"
                     rel="noreferrer"
-                    className="transition-colors hover:text-foreground"
+                    className="transition-colors hover:text-[oklch(0.72_0.16_243)] dark:hover:text-foreground"
                   >
                     +57 324 365 6689
                   </a>
@@ -723,19 +738,23 @@ function Index() {
           </div>
 
           {/* Barra inferior de cierre */}
-          <div className="flex flex-col gap-3 border-t border-border py-6 text-xs sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-3 border-t border-white/15 py-6 text-xs sm:flex-row sm:items-center sm:justify-between dark:border-border">
             <p>
               © {new Date().getFullYear()} Nexiatech. Todos los derechos reservados. · Empresa del
               ecosistema panamproject.
             </p>
             <div className="flex items-center gap-4">
-              <span className="transition-colors hover:text-foreground">Privacidad</span>
-              <span className="transition-colors hover:text-foreground">Términos</span>
+              <span className="transition-colors hover:text-[oklch(0.72_0.16_243)] dark:hover:text-foreground">
+                Privacidad
+              </span>
+              <span className="transition-colors hover:text-[oklch(0.72_0.16_243)] dark:hover:text-foreground">
+                Términos
+              </span>
             </div>
           </div>
 
           {/* Crédito de desarrollo: discreto a propósito */}
-          <p className="pb-5 text-center text-[10px] tracking-wide text-muted-foreground/40 transition-colors hover:text-muted-foreground">
+          <p className="pb-5 text-center text-[10px] tracking-wide text-white/55 transition-colors hover:text-white dark:text-muted-foreground/40 dark:hover:text-muted-foreground">
             Development by SparkleCow
           </p>
         </div>
